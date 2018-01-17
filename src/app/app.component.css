@@ -1,0 +1,46 @@
+body {
+  background: #fff;
+}
+
+.content {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  border:1px solid #000;
+}
+
+tr {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  height: 20px;
+  vertical-align: top;
+}
+
+.btn {
+  display: block;
+  width: 50px;
+  margin: auto;
+  background-color: aqua;
+  border: 1px solid #000;
+  border-radius: 15px;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 0;
+}
+
+.btn:hover {
+  border: 1px solid red;
+  -ms-transform: scale(1.1, 1.1); /* IE 9 */
+  -webkit-transform: scale(1.1, 1.1); /* Safari */
+  transform: scale(1.1, 1.1);
+  z-index: 10;
+}
