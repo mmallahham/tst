@@ -1,0 +1,87 @@
+
+<div class="content text-center">
+<table id="diagramTable" style="margin:auto;text-align: center" class ="well">
+<tr>
+  <td>
+      |<br><a class="btn" href="#">Q</a>
+    <table>
+        <tr>
+          <td>
+              |<br><a id="123" class="btn" href="#">Q</a>
+              <table>
+                  <tr>
+                    <td>
+                        |<br> <a id="234" class="btn" href="#">Q</a>
+                    </td>
+                    <td>
+                        |<br><a class="btn" href="#">Q</a>
+                    </td>
+                  </tr>
+                </table>
+          </td>
+          <td>
+              |<br><a class="btn" href="#">Q</a>
+            <table>
+                <tr>
+                  <td>
+                      |<br><a class="btn" href="#">Q</a>
+                    <table>
+                        <tr>
+                          <td>
+                              |<br><a class="btn" href="#">Q</a>
+                          </td>
+                          <td>
+                              |<br><a class="btn" href="#">Q</a>
+                            <table>
+                                <tr>
+                                  <td>
+                                      |<br><a class="btn" href="#">Q</a>
+                                    <table>
+                                        <tr>
+                                          <td>
+                                              |<br><a class="btn" href="#">Q</a>
+                                          </td>
+                                          <td>
+                                              |<br><a class="btn" href="#">Q</a>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  </td>
+                                  <td>
+                                      |<br><a class="btn" href="#">Q</a>
+                                    <table>
+                                        <tr>
+                                          <td>
+                                              |<br><a class="btn" href="#">Q</a>
+                                          </td>
+                                          <td>
+                                              |<br><a class="btn" href="#">Q</a>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  </td>
+                                </tr>
+                              </table>
+                          </td>
+                        </tr>
+                      </table>
+                  </td>
+                  <td>
+                      |<br><a class="btn" href="#">Q</a>
+                  </td>
+                </tr>
+              </table>
+          </td>
+        </tr>
+      </table>
+  </td>
+  <td>
+      |<br><a class="btn" href="#">S</a>
+  </td>
+</tr>
+</table>
+</div>
+<br><br><br><br><br><br>
+<button id ="btn1">add</button>
+
+<br><br><br><br><br>

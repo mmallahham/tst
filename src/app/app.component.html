@@ -1,87 +1,39 @@
 
-<div class="content text-center">
-<table id="diagramTable" style="margin:auto;text-align: center" class ="well">
-<tr>
-  <td>
-      |<br><a class="btn" href="#">Q</a>
-    <table>
-        <tr>
-          <td>
-              |<br><a id="123" class="btn" href="#">Q</a>
-              <table>
-                  <tr>
-                    <td>
-                        |<br> <a id="234" class="btn" href="#">Q</a>
-                    </td>
-                    <td>
-                        |<br><a class="btn" href="#">Q</a>
-                    </td>
-                  </tr>
-                </table>
-          </td>
-          <td>
-              |<br><a class="btn" href="#">Q</a>
-            <table>
-                <tr>
-                  <td>
-                      |<br><a class="btn" href="#">Q</a>
-                    <table>
-                        <tr>
-                          <td>
-                              |<br><a class="btn" href="#">Q</a>
-                          </td>
-                          <td>
-                              |<br><a class="btn" href="#">Q</a>
-                            <table>
-                                <tr>
-                                  <td>
-                                      |<br><a class="btn" href="#">Q</a>
-                                    <table>
-                                        <tr>
-                                          <td>
-                                              |<br><a class="btn" href="#">Q</a>
-                                          </td>
-                                          <td>
-                                              |<br><a class="btn" href="#">Q</a>
-                                          </td>
-                                        </tr>
-                                      </table>
-                                  </td>
-                                  <td>
-                                      |<br><a class="btn" href="#">Q</a>
-                                    <table>
-                                        <tr>
-                                          <td>
-                                              |<br><a class="btn" href="#">Q</a>
-                                          </td>
-                                          <td>
-                                              |<br><a class="btn" href="#">Q</a>
-                                          </td>
-                                        </tr>
-                                      </table>
-                                  </td>
-                                </tr>
-                              </table>
-                          </td>
-                        </tr>
-                      </table>
-                  </td>
-                  <td>
-                      |<br><a class="btn" href="#">Q</a>
-                  </td>
-                </tr>
-              </table>
-          </td>
-        </tr>
-      </table>
-  </td>
-  <td>
-      |<br><a class="btn" href="#">S</a>
-  </td>
-</tr>
-</table>
-</div>
-<br><br><br><br><br><br>
-<button id ="btn1">add</button>
 
-<br><br><br><br><br>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"  style="padding:8px"><img src="./assets/brand.jpg" alt=""></a>
+      <a class="navbar-brand" href="#">Full Stack</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/quiz" routerLinkActive="active">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container bg-3 text-center">
+  <router-outlet></router-outlet>
+
+</div>
+<footer class="container-fluid text-center navbar-fixed-bottom navbar-inverse">
+  <p style="color:white">designed and developed by Mohammad Allahham 2018</p>
+</footer>
+
+
+
+
