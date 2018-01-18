@@ -1,4 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
+import _ = require('underscore');
 import { DataService } from '../data.service';
 import { IQuestion } from '../question';
 
@@ -11,23 +12,38 @@ import { IQuestion } from '../question';
 export class QuestionComponent implements OnInit {
   pageTitle:string ='Please, Answer the question.';
   question:IQuestion ;
+  questions:IQuestion[];
   estimated:string = '3 up to 5'
 
   constructor(private _data:DataService ) { }
 
   ngOnInit() {
-    this._data.getQuestion(1).subscribe(q => this.question = q[0]);
+    this._data.getQuestion(0).subscribe(q => this.question = q[0]);
+    this._data.getAllQuestions().subscribe(data => this.questions = data);
   }
 
   onYes(){
-    var id = this.question.nextYID;
-    console.log(this.question);
+    this.findQuestion(true);
+  }
 
-    if(!this.question.nextYID){
-      this._data.getQuestion(id).subscribe(q => this.question = q[0]);
+  onNo(){
+    this.findQuestion(false);
+  }
+
+  findQuestion(isYes:boolean){
+    var nextId = isYes ? this.question.nextYID : this.question.nextNID;
+    var nextType = isYes ? this.question.nextYType : this.question.nextNType;
+    console.log(nextId);
+
+    if(nextType == 0){
+      this.question = _.filter(
+        this.questions,q => q.id == nextId)[0];
     }
     else{
-
+      //find the answer
     }
   }
+
+
+
 }

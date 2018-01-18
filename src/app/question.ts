@@ -5,5 +5,5 @@ export interface IQuestion {
     nextNID?: number,
     nextYType?: number,
     nextNType?: number,
-    parantID?: number
+    parentID?: number
 }
