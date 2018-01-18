@@ -1,3 +1,9 @@
 export interface IQuestion {
-  name:string;
+    id: number,
+    question: string,
+    nextYID?: number,
+    nextNID?: number,
+    nextYType?: number,
+    nextNType?: number,
+    parantID?: number
 }

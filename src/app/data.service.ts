@@ -12,4 +12,11 @@ export class DataService {
     console.log('call get'+this._backEndUrl+'questions');
     return this._http.get<IQuestion[]>(this._backEndUrl+'questions/'+id);
   }
+
+
+  getAllQuestions(){
+    console.log('call get'+this._backEndUrl+'questions');
+    return this._http.get<IQuestion[]>(this._backEndUrl+'questions');
+  }
+
 }

@@ -1,0 +1,22 @@
+
+<table>
+<thead>
+  <tr>
+  <td>id</td>
+  <td>Question</td>
+  <td>NYID</td>
+  <td>NNID</td>
+  <td>PID</td>
+</tr>
+</thead>
+<tbody></tbody>
+<tbody>
+  <tr *ngFor='let question of questions'>
+  <td>{{question.id}}</td>
+  <td>{{question.question}}</td>
+  <td>{{question.nextYID}}</td>
+  <td>{{question.nextNID}}</td>
+  <td>{{question.parentID}}</td>
+  </tr>
+</tbody>
+</table>
