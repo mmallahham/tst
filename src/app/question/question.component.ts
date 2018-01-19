@@ -16,7 +16,9 @@ export class QuestionComponent implements OnInit {
   constructor(private _data:DataService ) { }
 
   ngOnInit() {
-    this._data.getQuestion(1).subscribe(q => this.question = q[0]);
+    this._data.getQuestion(1).subscribe(q => {
+      this.question = q[0];
+    });
   }
 
   onYes(){

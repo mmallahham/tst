@@ -1,0 +1,16 @@
+.qu {
+  border-width: 1;
+  border-color:  #000;
+  display: block;
+  background-color: aqua;
+}
+td {
+  border-width: 1;
+  border-color:  #000;
+  border-style: solid;
+  vertical-align: top;
+
+}
+table{
+  border:1px solid #000;
+}
