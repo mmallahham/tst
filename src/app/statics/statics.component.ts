@@ -1,0 +1,49 @@
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { IQuestion } from '../question';
+import { DataService } from '../data.service';
+
+@Component({
+  selector: 'app-statics',
+  templateUrl: './statics.component.html',
+  styleUrls: ['./statics.component.css']
+})
+export class StaticsComponent implements AfterViewInit{
+  questions:IQuestion[];
+
+  @ViewChild('treeDiagram')
+  private treeDgrm : ElementRef;
+
+  innerHTML:string;
+  constructor(private _data:DataService) { }
+
+  ngAfterViewInit() {
+    this._data.getAllQuestions().subscribe((q:IQuestion[]) => {
+      this.questions = q;
+     console.log(this.getQuestionDigram(1));
+
+      this.treeDgrm.nativeElement.innerHTML = this.getQuestionDigram(1);
+
+    });
+
+  }
+
+  getQuestionDigram(id:number):string{
+
+    var question:IQuestion = this.questions.find(q => q.id == id);
+    var res = '';
+    res += '|<br><a id="Q'+id+'" class="qu" href="">Q</a><table><tr>';
+    if(!question.nextYType){
+      res += '<td>';
+      res += this.getQuestionDigram(question.nextYID);
+      res += '</td>';
+    }
+    if(!question.nextNType){
+      res += '<td>';
+      res += this.getQuestionDigram(question.nextNID);
+      res += '</td>';
+    }
+    res += '</tr></table>';
+    return res;
+  }
+
+}
