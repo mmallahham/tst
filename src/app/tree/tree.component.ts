@@ -1,23 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { IQuestion } from '../question';
 import { DataService } from '../data.service';
-import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.css']
 })
-export class TreeComponent implements OnInit {
+export class TreeComponent implements AfterViewInit{
   questions:IQuestion[];
 
-  constructor(private _data:DataService )
-   { }
+  @ViewChild('treeDiagram')
+  private treeDgrm : ElementRef;
 
-  ngOnInit() {
-    this._data.getAllQuestions().subscribe(data => this.questions = data);
-    console.log(this.questions);
+  innerHTML:string;
+  constructor(private _data:DataService) { }
 
+  ngAfterViewInit() {
+    this._data.getAllQuestions().subscribe((q:IQuestion[]) => {
+      this.questions = q;
+     console.log(this.getQuestionDigram(1));
+
+      this.treeDgrm.nativeElement.innerHTML = this.getQuestionDigram(1);
+
+    });
+
+  }
+
+  getQuestionDigram(id:number):string{
+
+    var question:IQuestion = this.questions.find(q => q.id == id);
+    var res = '';
+    res += '|<br><a id="Q'+id+'" class="qu" href="">Q</a><table><tr>';
+    if(!question.nextYType){
+      res += '<td>';
+      res += this.getQuestionDigram(question.nextYID);
+      res += '</td>';
+    }
+    if(!question.nextNType){
+      res += '<td>';
+      res += this.getQuestionDigram(question.nextNID);
+      res += '</td>';
+    }
+    res += '</tr></table>';
+    return res;
   }
 
 }

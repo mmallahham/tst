@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http/';
 import { TreeComponent } from './tree/tree.component';
 import { QuizIntroComponent } from './quiz-intro/quiz-intro.component';
 import { StaticsComponent } from './statics/statics.component';
+import { WinComponent } from './win/win.component';
+import { NewQuestionComponent } from './new-question/new-question.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { StaticsComponent } from './statics/statics.component';
     QuestionComponent,
     TreeComponent,
     QuizIntroComponent,
-    StaticsComponent
+    StaticsComponent,
+    WinComponent,
+    NewQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,8 @@ import { StaticsComponent } from './statics/statics.component';
       {path:'quiz',component: QuestionComponent},
       {path:'tree',component: TreeComponent},
       {path:'statics',component: StaticsComponent},
+      {path:'win',component: WinComponent},
+      {path:'new',component: NewQuestionComponent},
       {path:'',component: HomeComponent},
       {path:'**',component: HomeComponent}
     ])

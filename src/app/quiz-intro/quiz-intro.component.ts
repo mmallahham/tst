@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./quiz-intro.component.css']
 })
 export class QuizIntroComponent implements OnInit {
+  pageTitle:string = 'Game intro';
 
   constructor(private _router:Router) { }
 
@@ -14,8 +15,6 @@ export class QuizIntroComponent implements OnInit {
   }
 
   onStart(){
-    console.log(this._router);
-
     this._router.navigate(['/quiz']);
   }
 

@@ -1,3 +1,4 @@
+
 img {
   height: 250px
 }
@@ -16,4 +17,11 @@ h3 {
 
 .panel-primary{
   padding: 0px;
+}
+.form-control{
+  padding: 10px;
+  font-size: 18px;
+}
+.form-group{
+  padding-top: 40
 }

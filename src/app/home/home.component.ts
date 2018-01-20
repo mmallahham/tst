@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser/src/browser/title';
+import { Router } from '@angular/router/';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,15 @@ import { Title } from '@angular/platform-browser/src/browser/title';
 })
 export class HomeComponent implements OnInit {
   pageTitle:string = 'Welcome';
-  constructor() { }
+  constructor(private _router:Router) { }
 
   ngOnInit() {
+  }
+
+  onGoToQuiz(){
+    this._router.navigate(['/quizIntro']);
+
+
   }
 
 }

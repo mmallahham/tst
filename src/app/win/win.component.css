@@ -1,0 +1,19 @@
+img {
+    height: 250px
+  }
+
+  .panel-heading {
+    padding:0;
+  }
+  .row {
+    padding-top: 10px;
+  }
+
+  h3 {
+    padding: 10px ;
+    margin: 0px;
+  }
+
+  .panel-primary{
+    padding: 0px;
+  }
