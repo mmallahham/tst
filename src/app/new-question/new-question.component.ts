@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { IQuestion } from '../question';
-import _ = require('underscore');
+import * as _ from 'underscore';
 import { IAnswer } from '../answer';
 
 
@@ -71,8 +71,8 @@ export class NewQuestionComponent implements OnInit {
         question:this.newQuestion,
         nextYID:aId,
         nextNID:this.aid,
-        nextYType:0,
-        nextNType:0
+        nextYType:1,
+        nextNType:1
       };
     }
     else{
@@ -81,20 +81,21 @@ export class NewQuestionComponent implements OnInit {
         question:this.newQuestion,
         nextYID:this.aid,
         nextNID:aId,
-        nextYType:0,
-        nextNType:0
+        nextYType:1,
+        nextNType:1
       }
     }
     this._data.insertQuestion(qId,qParam);
 
     let updateQParam;
     if(this.aid == this.question.nextNID.toString()){
-      updateQParam = {nextNID:qId,nextNType:1 }
+      updateQParam = {nextNID:qId,nextNType:0 }
     }
     else{
-      updateQParam = {nextYID:qId,nextYType:1 }
+      updateQParam = {nextYID:qId,nextYType:0}
     }
     this._data.updateQuestion(this.question.id,updateQParam);
 
+    this._router.navigate(['/save']);
   }
 }

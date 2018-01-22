@@ -5,3 +5,23 @@ td {
 thead{
   background-color:dodgerblue;
 }
+
+img {
+  height: 200px
+}
+
+.panel-heading {
+  padding:0;
+}
+.row {
+  padding-top: 10px;
+}
+
+h3 {
+  padding: 10px ;
+  margin: 0px;
+}
+
+.panel-primary{
+  padding: 0px;
+}

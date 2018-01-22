@@ -1,22 +1,54 @@
 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+      <h3>{{pageTitle}}</h3>
+  </div>
+  <div class="panel-body"  >
+      <div class="row">
+        <img src="../../assets/images/statistics.png" alt="" class="img img-fluid">
+      </div>
+      <div class="row"  >
+        <h2 class="text-center well">I have <b>{{qCount}}</b> questions in my database and <br>I have <b>{{aCount}}</b> animals</h2>
+      </div>
+      <div class="row">
+        <div class="col-xs-7">
+          <table class="table table-striped">
+            <thead class="thead">
+              <tr>
+                <th>id</th>
+                <th>Question</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let question of questions'>
+                <td>{{question.id}}</td>
+                <td>{{question.question}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-5">
+          <table class="table table-striped">
+            <thead class="thead">
+              <tr>
+                <th>id</th>
+                <th>Animal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let answer of answers'>
+                <td>{{answer.id}}</td>
+                <td>{{answer.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
 
-<table class="table table-striped">
-  <thead class="thead">
-    <tr>
-      <th>id</th>
-      <th>Question</th>
-      <th>NYID</th>
-      <th>NNID</th>
-      <th>PID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor='let question of questions'>
-      <td>{{question.id}}</td>
-      <td>{{question.question}}</td>
-      <td>{{question.nextYID}}</td>
-      <td>{{question.nextNID}}</td>
-      <td>{{question.parentID}}</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+

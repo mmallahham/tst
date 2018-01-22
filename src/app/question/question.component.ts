@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import _ = require('underscore');
+import * as _ from 'underscore';
 import { DataService } from '../data.service';
 import { IQuestion } from '../question';
 import { isQuote } from '@angular/compiler';

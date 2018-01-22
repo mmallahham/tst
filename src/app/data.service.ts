@@ -5,8 +5,8 @@ import { IAnswer } from './answer';
 
 @Injectable()
 export class DataService {
- //  private _backEndUrl = 'https://tranquil-tor-64128.herokuapp.com/';
-  private _backEndUrl = 'http://localhost:5000/';
+   private _backEndUrl = 'https://tranquil-tor-64128.herokuapp.com/';
+ // private _backEndUrl = 'http://localhost:5000/';
 
   constructor(private _http:HttpClient) { }
 
@@ -28,13 +28,13 @@ export class DataService {
   insertQuestion(id,doc){
     console.log(doc);
 
-    return this._http.post(this._backEndUrl+'questions/'+id,doc).subscribe();
+    return this._http.post(this._backEndUrl+'questions',doc).subscribe();
   }
 
   updateQuestion(id,updateObj){
     console.log(updateObj);
 
-    return this._http.post(this._backEndUrl+'questions',updateObj).subscribe();
+    return this._http.post(this._backEndUrl+'questions/'+id,updateObj).subscribe();
   }
 
 
