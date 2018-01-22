@@ -5,8 +5,8 @@ import { IAnswer } from './answer';
 
 @Injectable()
 export class DataService {
-   private _backEndUrl = 'https://tranquil-tor-64128.herokuapp.com/';
- // private _backEndUrl = 'http://localhost:5000/';
+//   private _backEndUrl = 'https://tranquil-tor-64128.herokuapp.com/';
+  private _backEndUrl = 'http://localhost:5000/';
 
   constructor(private _http:HttpClient) { }
 
