@@ -1,5 +1,6 @@
 img {
-  height: 500px
+  max-height:300px;
+  padding-bottom:30px
 }
 
 .panel-heading {
@@ -12,4 +13,8 @@ h3 {
 
 .panel-primary{
   padding: 0px;
+}
+
+button{
+  width:150px;
 }

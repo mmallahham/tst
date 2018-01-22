@@ -2,6 +2,9 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import _ = require('underscore');
 import { DataService } from '../data.service';
 import { IQuestion } from '../question';
+import { isQuote } from '@angular/compiler';
+import { IAnswer } from '../answer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -11,26 +14,33 @@ import { IQuestion } from '../question';
 @Injectable()
 export class QuestionComponent implements OnInit {
   pageTitle:string ='Please, Answer the question.';
-  question:IQuestion ;
+  question:IQuestion = {id:0,question:'loading...'};
   questions:IQuestion[];
+  answer:IAnswer;
+  answers:IAnswer[];
   estimatedMin:number;
   estimatedMax:number;
-  estimatedMinReached:boolean ;
-  estimated:string = '3 up to 5'
+  checkAnswer:boolean;
+  lvl:number = -1;
 
-  constructor(private _data:DataService ) { }
+  constructor(private _data:DataService,
+              private _router: Router ) { }
 
   ngOnInit() {
-    this.estimatedMin = 0;
+    this.checkAnswer = false;
+    this.pageTitle ='Please, Answer the question.';
+    this.question = {id:0,question:'loading...'};
+    this.estimatedMin = 1000;
     this.estimatedMax = 0;
+
     this._data.getAllQuestions().subscribe(q => {
       this.questions = q;
-    });
-    this._data.getQuestion(1).subscribe(q => {
-      this.question = q[0];
+      this.question = _.filter(
+        this.questions,q => q.id == 1)[0];
       this.calcEstimated(this.question);
     });
-    this.estimated = this.estimatedMin + ' up to ' + this.estimatedMax;
+    this._data.getAllAnswers().subscribe(a => {
+      this.answers = a;});
   }
 
   onYes(){
@@ -42,61 +52,67 @@ export class QuestionComponent implements OnInit {
   }
 
   NextQuestion(isYes:boolean){
-    let nextId = isYes ? this.question.nextYID : this.question.nextNID;
-    let nextType = isYes ? this.question.nextYType : this.question.nextNType;
-    console.log(nextId);
 
-    if(nextType == 0){
+    if(this.checkAnswer){
+      if(isYes){
+        this._router.navigate(['/win']);
+      }
+      else{
+
+        console.log(this.question);
+
+        this._router.navigate(['/new',this.question.id,this.question.nextNID]);
+      }
+    }
+    else {
+      this.lvl = -1;
+      this.estimatedMin = 1000;
+      this.estimatedMax = 0;
+      let nextId = isYes ? this.question.nextYID : this.question.nextNID;
+      let nextType = isYes ? this.question.nextYType : this.question.nextNType;
+      this.checkAnswer = false;
+
+      if(nextType == 0){
       this.question = _.filter(
         this.questions,q => q.id == nextId)[0];
-    }
-    else{
-      //find the answer
+        this.calcEstimated(this.question);
+      }
+      else{
+        this.answer = _.filter(this.answers,a => a.id == nextId)[0];
+        this.question = {id:this.question.id,question:"I think it is "+this.answer.name,nextNID:nextId}
+        this.checkAnswer = true;
+      }
     }
   }
 
-  calcEstimated(question:IQuestion):number{
-    console.log('call calcEstimated ' + question.id);
+  calcEstimated(question:IQuestion){
     let nextQ:IQuestion;
-    let res:number = 0;
+    ++this.lvl;
 
-    if(question.nextNType && question.nextYType){
-      return 0;
-    }
-    else{
-      if(!question.nextNType){
-        res++;
-        this._data.getQuestion(question.nextNID).subscribe(q => {
-          nextQ = q[0];
-         this.calcEstimated(nextQ);
-        });
-      }
-
-      if(!question.nextYType){
-        res++;
-        this._data.getQuestion(question.nextYID).subscribe(q => {
-          nextQ = q[0];
-          this.calcEstimated(nextQ);
-        });
+    if(question.nextNType || question.nextYType){
+      if(this.lvl < this.estimatedMin){
+        this.estimatedMin = this.lvl ;
       }
     }
-    console.log('res = '+res);
 
-    switch(res){
-      case 2:
-        this.estimatedMin += 1;
-        this.estimatedMax += 1;
-        console.log(this.estimatedMin,this.estimatedMax);
-        return 1;
-      case 1:
-        this.estimatedMax += 1;
-        this.estimatedMin = 0;
-        console.log(this.estimatedMin,this.estimatedMax);
-        return 1;
-      case 0:
-        this.estimatedMin = 0;
-        console.log(this.estimatedMin,this.estimatedMax);
-        return 0;
+    if(!question.nextNType){
+      nextQ = this.findQuestionByID(question.nextNID);
+      this.calcEstimated(nextQ);
     }
+
+    if(!question.nextYType){
+      nextQ = this.findQuestionByID(question.nextYID);
+      this.calcEstimated(nextQ);
+    }
+    if(this.lvl > this.estimatedMax){
+      this.estimatedMax = this.lvl;
+    }
+    this.lvl--;
+   // callback();
+  }
+
+  findQuestionByID(id):IQuestion{
+    return _.filter(this.questions,q => q.id == id)[0];
   }
 }
+

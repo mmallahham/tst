@@ -3,35 +3,41 @@
       <h3>{{pageTitle}}</h3>
   </div>
   <div class="panel-body"  >
-
+    <div class="row">
+      <img src="../../assets/images/brain.png" alt="" >
+    </div>
       <div class="row"  >
-        <h2 class="text-center well">Help me improve my database<br>please fill the information below</h2>
+        <h2 class="text-center well">Please help me improve my knowledge<br>fill the information below</h2>
       </div>
       <div class="row">
         <div class="form-group">
           <label class="col-sm-2 control-label text-right">Name:</label>
           <div class="col-sm-9">
-            <input class="form-control" id="name" type="text" value="Name of the animal you where thinking of ">
+            <input class="form-control" id="name" type="text" [(ngModel)]="name"
+              placeholder="Name of the animal you where thinking of ">
           </div>
         </div>
-        <br>
+      </div>
+      <div class="row">
         <div class="form-group">
           <label class="col-sm-2 control-label text-right">Question:</label>
           <div class="col-sm-9">
-            <input class="form-control" id="question" type="text" value="Yes/No Question to distinguish between the two animals">
+            <input class="form-control" id="question" type="text" [(ngModel)]="newQuestion"
+              placeholder="Yes/No Question to distinguish between the two animals">
           </div>
         </div>
-
+      </div>
+      <div class="row">
         <div class="form-group">
           <label class="col-sm-2 control-label text-right">Answer:</label>
           <div class="col-sm-9">
-            <input class="form-control" id="yesOrNo" type="text" value="Answer (y/n) for the animal you where thinkin of">
+            <input class="form-control" id="yesOrNo" type="list" [(ngModel)]="yesOrNo"
+              placeholder="Answer (y/n) for the animal you where thinkin of">
           </div>
         </div>
-
       </div>
       <div class="row">
-        <button class="btn btn-primary btn-lg" (click)='onStart()'>Save</button>
+        <button class="btn btn-primary btn-lg" (click)='onSave()'>Save</button>
       </div>
   </div>
 </div>

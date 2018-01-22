@@ -14,7 +14,7 @@ export class WinComponent implements OnInit {
   }
 
   onHome(){
-    this._router.navigate(['/quiz']);
+    this._router.navigate(['/home']);
   }
 
 }

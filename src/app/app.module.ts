@@ -14,6 +14,8 @@ import { QuizIntroComponent } from './quiz-intro/quiz-intro.component';
 import { StaticsComponent } from './statics/statics.component';
 import { WinComponent } from './win/win.component';
 import { NewQuestionComponent } from './new-question/new-question.component';
+import { FormsModule } from '@angular/forms';
+import { TreeItemComponent } from './tree-item/tree-item.component'
 
 
 @NgModule({
@@ -25,11 +27,13 @@ import { NewQuestionComponent } from './new-question/new-question.component';
     QuizIntroComponent,
     StaticsComponent,
     WinComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    TreeItemComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       {path:'home',component: HomeComponent},
       {path:'quizIntro',component: QuizIntroComponent},
@@ -37,7 +41,7 @@ import { NewQuestionComponent } from './new-question/new-question.component';
       {path:'tree',component: TreeComponent},
       {path:'statics',component: StaticsComponent},
       {path:'win',component: WinComponent},
-      {path:'new',component: NewQuestionComponent},
+      {path:'new/:id/:aid',component: NewQuestionComponent},
       {path:'',component: HomeComponent},
       {path:'**',component: HomeComponent}
     ])
