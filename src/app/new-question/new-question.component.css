@@ -15,6 +15,9 @@ h3 {
   margin: 0px;
 }
 
+button{
+  width:150px;
+}
 .panel-primary{
   padding: 0px;
 }
